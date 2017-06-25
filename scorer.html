@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="main.css">
   <title>Footy Keeper</title>
 </head>
 <body>
   <div id="containerOne">
-    <input type="text" placeholder="Your team's player count" id="playerCount">  
+    <input type="text" placeholder="Your team's player count" id="playerCount">
     <button onclick="createTable()">Begin</button>
   </div>
   <table>
@@ -25,7 +24,7 @@
       papaya = document.getElementById("containerOne");
       document.getElementsByTagName("thead")[0].innerHTML = "<tr><th>Player</th><th>Number</th><th>Position</th></tr>";
       document.getElementsByTagName("tbody")[0].innerHTML = playerRow.repeat(players);
-      document.getElementById("advancePrompt").innerHTML = "When you are done inputing your roster, click advance.<br/><button onclick='prepForStart()'>Advance</button>";
+      document.getElementById("advancePrompt").innerHTML = "<span class='white'>When you are done inputing your roster, click advance.</span><br/><br/><button onclick='prepForStart()'>Advance</button>";
       papaya.removeChild(papaya.childNodes[1]);
       papaya.removeChild(papaya.childNodes[2]);
     }
@@ -40,7 +39,7 @@
         // alert(roster[rosterReps]);
         numbers.push(document.getElementsByClassName("pNumber")[rosterReps].value);
         // alert(numbers[rosterReps]);
-        document.getElementById("advancePrompt").innerHTML = "Your team is saved! Press 'GOAL!' when your team scores, or press 'END' when the game is over.<br><button onclick='goal()'>GOAL!</button><br/><br/><button onclick='endGame()'>END</button>";
+        document.getElementById("advancePrompt").innerHTML = "<span class='white'>Your team is saved! Press 'GOAL!' when your team scores, or press 'END' when the game is over.</span><br/><br/><button onclick='goal()'>GOAL!</button><br/><br/><button onclick='endGame()'>END</button>";
       }
     }
 
