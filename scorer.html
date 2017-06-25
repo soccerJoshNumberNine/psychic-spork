@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Footy Tracker</title>
-  <style type="text/css">
-    th, td {
-      border: 1px solid #000;
-      padding: 5px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <title>Footy Keeper</title>
 </head>
 <body>
   <div id="containerOne">
@@ -45,7 +40,7 @@
         // alert(roster[rosterReps]);
         numbers.push(document.getElementsByClassName("pNumber")[rosterReps].value);
         // alert(numbers[rosterReps]);
-        document.getElementById("advancePrompt").innerHTML = "Your team is saved! Press 'GOAL!' when your team scores, or press 'END' when the game is over.<br><button onclick='goal()'>GOAL!</button><br/><button onclick='endGame()'>END</button>";
+        document.getElementById("advancePrompt").innerHTML = "Your team is saved! Press 'GOAL!' when your team scores, or press 'END' when the game is over.<br><button onclick='goal()'>GOAL!</button><br/><br/><button onclick='endGame()'>END</button>";
       }
     }
 
@@ -56,20 +51,20 @@
     function goal () {
       // document.getElementById("goalPrompt").innerHTML = "<input type='text' placeholder='Who scored?' class='scorer'/><br/><input type='text' placeholder='Who made the assist?' class='assister'/><br/><button onclick='submitGoal()'>Submit</button>";
       dropdown = "<select id='goalScorer'><option hidden>Select the scorer</option>";
-      //+ String(scorerOption).repeat(roster.length) + "</select>";
+      // String(scorerOption).repeat(roster.length) + "</select>";
       for (reps = 0; reps < roster.length; reps++) {
         dropdown += "<option value='" + reps + "'>" + roster[reps] + "</option>";
       }
 
       dropdown += "</option></select>";
-      dropdown += "<br/>";
+      dropdown += "<br/><br/>";
       dropdown += "<select id='goalAssist'><option hidden>Select who made the assist</option>";
 
       for (reps = 0; reps < roster.length; reps++) {
         dropdown += "<option value='" + reps + "'>" + roster[reps] + "</option>";
       }
 
-      dropdown += "</select><br/><button onclick='submitGoal()'>Submit</button>";
+      dropdown += "</select><br/><br/><button onclick='submitGoal()'>Submit</button>";
 
       document.getElementById("goalPrompt").innerHTML = String(dropdown);
     }
