@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Footy Tracker</title>
-  <style type="text/css">
-    th, td {
-      border: 1px solid #000;
-      padding: 5px;
-    }
-  </style>
+  <title>Footy Keeper</title>
 </head>
 <body>
   <div id="containerOne">
-    <input type="text" placeholder="Your team's player count" id="playerCount">  
+    <input type="text" placeholder="Your team's player count" id="playerCount">
     <button onclick="createTable()">Begin</button>
   </div>
   <table>
@@ -30,7 +24,7 @@
       papaya = document.getElementById("containerOne");
       document.getElementsByTagName("thead")[0].innerHTML = "<tr><th>Player</th><th>Number</th><th>Position</th></tr>";
       document.getElementsByTagName("tbody")[0].innerHTML = playerRow.repeat(players);
-      document.getElementById("advancePrompt").innerHTML = "When you are done inputing your roster, click advance.<br/><button onclick='prepForStart()'>Advance</button>";
+      document.getElementById("advancePrompt").innerHTML = "<span class='white'>When you are done inputing your roster, click advance.</span><br/><br/><button onclick='prepForStart()'>Advance</button>";
       papaya.removeChild(papaya.childNodes[1]);
       papaya.removeChild(papaya.childNodes[2]);
     }
@@ -45,7 +39,7 @@
         // alert(roster[rosterReps]);
         numbers.push(document.getElementsByClassName("pNumber")[rosterReps].value);
         // alert(numbers[rosterReps]);
-        document.getElementById("advancePrompt").innerHTML = "Your team is saved! Press 'GOAL!' when your team scores, or press 'END' when the game is over.<br><button onclick='goal()'>GOAL!</button><br/><button onclick='endGame()'>END</button>";
+        document.getElementById("advancePrompt").innerHTML = "<span class='white'>Your team is saved! Press 'GOAL!' when your team scores, or press 'END' when the game is over.</span><br/><br/><button onclick='goal()'>GOAL!</button><br/><br/><button onclick='endGame()'>END</button>";
       }
     }
 
@@ -56,20 +50,20 @@
     function goal () {
       // document.getElementById("goalPrompt").innerHTML = "<input type='text' placeholder='Who scored?' class='scorer'/><br/><input type='text' placeholder='Who made the assist?' class='assister'/><br/><button onclick='submitGoal()'>Submit</button>";
       dropdown = "<select id='goalScorer'><option hidden>Select the scorer</option>";
-      //+ String(scorerOption).repeat(roster.length) + "</select>";
+      // String(scorerOption).repeat(roster.length) + "</select>";
       for (reps = 0; reps < roster.length; reps++) {
         dropdown += "<option value='" + reps + "'>" + roster[reps] + "</option>";
       }
 
       dropdown += "</option></select>";
-      dropdown += "<br/>";
+      dropdown += "<br/><br/>";
       dropdown += "<select id='goalAssist'><option hidden>Select who made the assist</option>";
 
       for (reps = 0; reps < roster.length; reps++) {
         dropdown += "<option value='" + reps + "'>" + roster[reps] + "</option>";
       }
 
-      dropdown += "</select><br/><button onclick='submitGoal()'>Submit</button>";
+      dropdown += "</select><br/><br/><button onclick='submitGoal()'>Submit</button>";
 
       document.getElementById("goalPrompt").innerHTML = String(dropdown);
     }
