@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+  th, td {
+    border: 1px solid #000;
+  }
+  </style>
+</head>
+<body>
+  <div id="containerOne">
+    <input type="text" placeholder="Your team's player count" id="playerCount">  
+    <button onclick="createTable()">Begin</button>
+  </div>
+  <table>
+    <thead></thead>
+    <tbody></tbody>
+  </table>
+  <p id="advancePrompt"></p>
+  <div id="goalPrompt"></div>
+
+<script>
+var playerRow = "<tr><td><input type='text' placeholder='Name' class='pName'/></td><td><input type='text' placeholder='Number (1, 42, etc.)' class='pNumber'/></td><td><select placeholder='Position' class='pPosition'><option hidden selected>Select Position (optional, not recommended on teams were players play many positions)</option><option value='0'>Goalkeeper</option><option value='1'>Defender</option><option value='2'>Midfielder</option><option value='3'>Forward</option></select></td></tr>";
+var players = null;
+var papaya = null;
+
+function createTable () {
+  players = document.getElementById("playerCount").value;
+  papaya = document.getElementById("containerOne");
+  document.getElementsByTagName("thead")[0].innerHTML = "<tr><th>Player</th><th>Number</th><th>Position</th></tr>";
+  document.getElementsByTagName("tbody")[0].innerHTML = playerRow.repeat(players);
+  document.getElementById("advancePrompt").innerHTML = "When you are done inputing your roster, click advance.<br/><button onclick='prepForStart()'>Advance</button>";
+  papaya.removeChild(papaya.childNodes[1]);
+  papaya.removeChild(papaya.childNodes[2]);
+}
+
+var roster = [];
+var numbers = [];
+var rosterReps = null;
+
+function prepForStart () {
+  for (rosterReps = 0; rosterReps < players; rosterReps++) {
+    roster.push(document.getElementsByClassName("pName")[rosterReps].value);
+    // alert(roster[rosterReps]);
+    numbers.push(document.getElementsByClassName("pNumber")[rosterReps].value);
+    // alert(numbers[rosterReps]);
+    document.getElementById("advancePrompt").innerHTML = "Your team is saved! Press 'GOAL!' when your team scores, or press 'END' when the game is over.<br><button onclick='goal()'>GOAL!</button>";
+  }
+}
+
+function goal () {
+  document.getElementById("goalPrompt").innerHTML = "<input type='text' placeholder='Who scored?' class='scorer'/><br/><input type='text' placeholder='Who made the assist?' class='assister'/>";
+}</script></body>
